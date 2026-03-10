@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -8,7 +13,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user)
-      redirect_to root_path, success: "ユーザー登録が完了しました"
+      redirect_to users_path, success: "ユーザー登録が完了しました"
     else
       flash.now[:danger] = 'ユーザー登録に失敗しました'
       render :new, status: :unprocessable_entity
@@ -20,7 +25,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :email,
-      :username,
+      :first_name,
+      :last_name,
       :display_name,
       :password,
       :password_confirmation

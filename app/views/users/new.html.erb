@@ -5,12 +5,24 @@
       新規登録
     </h1>
 
-    <%= simple_form_for :user do |f| %>
+    <%= simple_form_for @user do |f| %>
 
       <%= f.input :email,
           input_html: { class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm" } %>
 
       <%= f.input :password,
+          input_html: { class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm" } %>
+          
+      <%= f.input :password_confirmation,
+          input_html: { class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm" } %>
+
+      <%= f.input :first_name,
+          input_html: { class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm" } %>
+
+      <%= f.input :last_name,
+          input_html: { class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm" } %>
+
+      <%= f.input :display_name,
           input_html: { class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm" } %>
 
       <%= f.button :submit,
