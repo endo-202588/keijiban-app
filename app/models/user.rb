@@ -6,6 +6,7 @@ class User < ApplicationRecord
             if: -> { new_record? || will_save_change_to_crypted_password? }
 
   validates :password,
+            presence: true,
             confirmation: true,
             if: -> { new_record? || will_save_change_to_crypted_password? }
 
