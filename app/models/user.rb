@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :posts
+
   validates :password,
             length: { minimum: 4 },
             if: -> { new_record? || will_save_change_to_crypted_password? }
