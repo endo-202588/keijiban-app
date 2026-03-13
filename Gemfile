@@ -34,7 +34,7 @@ gem "simple_form"
 gem "draper"
 
 # Enum
-gem "enum_help"
+gem "enum_help", "0.0.19"
 
 # I18n
 gem "rails-i18n"

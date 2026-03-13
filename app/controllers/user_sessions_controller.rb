@@ -1,17 +1,29 @@
 class UserSessionsController < ApplicationController
-  def new; end
+  skip_before_action :require_login
+
+  def new
+    @user = User.new
+  end
 
   def create
-    @user = login(params[:email], params[:password])
-    if @user
-      redirect_back_or_to root_path
+    @user = User.new(login_params)
+
+    if login(@user.email, @user.password)
+      redirect_to posts_path, notice: "ログインしました"
     else
-      render :new
+      flash.now[:alert] = "メールアドレスまたはパスワードが違います"
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    redirect_to root_path
+    redirect_to root_path, notice: "ログアウトしました"
+  end
+
+  private
+
+  def login_params
+    params.require(:user).permit(:email, :password)
   end
 end

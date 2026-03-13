@@ -116,7 +116,7 @@ GEM
       request_store (>= 1.0)
       ruby2_keywords
     drb (2.2.3)
-    enum_help (0.0.20)
+    enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erb (6.0.2)
     erubi (1.13.1)
@@ -394,7 +394,7 @@ DEPENDENCIES
   capybara
   debug
   draper
-  enum_help
+  enum_help (= 0.0.19)
   importmap-rails
   jbuilder
   kaminari
