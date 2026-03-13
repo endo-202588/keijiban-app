@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
+      @post.save_tags(params[:tag_names].to_s.split)
       redirect_to posts_path, success: "新規投稿が完了しました"
     else
       flash.now[:danger] = "新規投稿に失敗しました"
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      @post.save_tags(params[:tag_names].to_s.split)
       redirect_to @post, success: "編集が完了しました"
     else
       flash.now[:danger] = "編集に失敗しました"
