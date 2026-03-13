@@ -1,10 +1,9 @@
 Rails.application.config.sorcery.submodules =
-  [:reset_password, :remember_me]
+  [ :reset_password, :remember_me ]
 
 Rails.application.config.sorcery.configure do |config|
-
   config.user_config do |user|
-    user.username_attribute_names = [:email]
+    user.username_attribute_names = [ :email ]
     user.stretches = 1 if Rails.env.test?
 
     user.downcase_username_before_authenticating = true

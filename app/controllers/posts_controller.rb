@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
   before_action :require_owner, only: %i[edit update destroy]
-  
+
   def index
     @posts = Post.order(created_at: :desc)
   end
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, success: "新規投稿が完了しました"
     else
-      flash.now[:danger] = '新規投稿に失敗しました'
+      flash.now[:danger] = "新規投稿に失敗しました"
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post, success: "編集が完了しました"
     else
-      flash.now[:danger] = '編集に失敗しました'
+      flash.now[:danger] = "編集に失敗しました"
       render :edit, status: :unprocessable_entity
     end
   end
